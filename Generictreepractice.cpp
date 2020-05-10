@@ -13,6 +13,14 @@ this->data=data;
 };
 #define loop(i,n) for(int i=0;i<n;i++)
 #define pb push_back
+int numleaf(node<int>* head)
+{
+if(head->children.size()==0)
+{return 1;}
+int small=0;
+loop(i,head->children.size()) small+=numleaf(head->children[i]);
+return small;
+}
 int sumnodes(node<int>* head)
 {
 int ans=head->data;
@@ -106,7 +114,8 @@ print_tree(root);
 cout<<endl<<"number of nodes: "<<nodenumber(root);
 cout<<endl;
 print_tree_levelwise(root);
-cout<<endl<<"height: "<<treeheight(root);
-cout<<endl<<"maxdata: "<<maxdata(root);
-cout<<endl<<"sumtree: "<<sumnodes(root);
+cout<<endl<<"height "<<treeheight(root);
+cout<<endl<<"maxdata "<<maxdata(root);
+cout<<endl<<"sumtree "<<sumnodes(root);
+cout<<endl<<"number of leaf "<<numleaf(root);
 }
